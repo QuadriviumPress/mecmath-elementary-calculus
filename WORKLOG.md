@@ -13,6 +13,7 @@
 ## Source
 
 - Homepage: https://www.mecmath.net/calculus/
+- LibreTexts: https://math.libretexts.org/Bookshelves/Calculus/Elementary_Calculus_2e_(Corral)
 - Master: `calc12book.tex` (9 chapters + appendix A + FDL 1.3 + History)
 - Also includes Greek alphabet reference page (`calc12book-greek.tex`)
 

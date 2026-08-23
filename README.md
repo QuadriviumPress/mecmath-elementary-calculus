@@ -5,6 +5,7 @@ LaTeX source to a searchable, offline-capable web textbook.
 
 - **Repository:** https://github.com/QuadriviumPress/mecmath-elementary-calculus
 - **Original text:** https://www.mecmath.net/calculus/
+- **LibreTexts edition:** https://math.libretexts.org/Bookshelves/Calculus/Elementary_Calculus_2e_(Corral)
 - **License:** [GNU FDL 1.3](https://www.gnu.org/licenses/fdl-1.3.html)
 
 ## How it works
