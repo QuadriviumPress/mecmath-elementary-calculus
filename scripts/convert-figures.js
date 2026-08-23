@@ -135,10 +135,15 @@ function copyTikzDependencies(content, workDir) {
     const base = m[1].trim();
     for (const ext of ['', '.eps', '.0', '.pdf', '.png']) {
       const src = path.join(srcDir, base + ext);
-      if (fs.existsSync(src)) {
-        fs.copyFileSync(src, path.join(workDir, path.basename(src)));
-        break;
+      if (!fs.existsSync(src)) continue;
+      const destName = path.basename(src);
+      fs.copyFileSync(src, path.join(workDir, destName));
+      if (destName.endsWith('.eps') || destName.endsWith('.0')) {
+        const pdfName = destName.replace(/\.(eps|0)$/, '') + '-eps-converted-to.pdf';
+        const pdfPath = path.join(workDir, pdfName);
+        if (!fs.existsSync(pdfPath)) epsToPdf(src, pdfPath);
       }
+      break;
     }
   }
 }
