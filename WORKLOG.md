@@ -1,27 +1,23 @@
 # Mecmath Elementary Calculus — Work Log
 
-Building an Eleventy website that renders the mecmath *Elementary Calculus*
-textbook (Michael Corral) with the LaTeX source as ground truth, mirroring the
-`mecmath-trigonometry` project architecture, deployable to GitHub Pages under
-the `QuadriviumPress` org.
-
 ## Status
 
-- **Repository:** created
-- **LaTeX source:** not yet downloaded
-- **Build engine:** not started (will adapt from `mecmath-trigonometry`)
+- **Repository:** https://github.com/QuadriviumPress/mecmath-elementary-calculus
+- **LaTeX source:** downloaded (`calc12book-1.0-src.tar.gz`, 54 files)
+- **Build engine:** ported from `mecmath-trigonometry`
+- **Site:** 82 pages, search index, book index (519 refs)
+- **Figures:** ~287/320 SVG conversions (MetaPost/gnuplot edge cases remain)
+- **Verify:** `npm run build && npm run verify` passes locally
+- **Deploy:** GitHub Pages on push to `main`
 
-## Planned steps
-
-1. Download `calc12book-1.0-src.tar.gz` into `mecmath-elementary-calculus/`
-2. Inventory corpus (master `.tex`, chapters, figures, custom macros)
-3. Compare structure with `mecmath-trigonometry` (KOMA scrbook, shared styling)
-4. Copy and adapt Eleventy framework (`lib/`, `scripts/`, templates, CI)
-5. Handle TeX Live compatibility shims (upstream targets TeX Live 2020)
-6. Deploy to `https://quadriviumpress.github.io/mecmath-elementary-calculus/`
-
-## Upstream references
+## Source
 
 - Homepage: https://www.mecmath.net/calculus/
-- Latest PDF: ElementaryCalculus.pdf (2022-11-22)
-- Related: Trigonometry (prequel), Vector Calculus (sequel)
+- Master: `calc12book.tex` (9 chapters + appendix A + FDL 1.3 + History)
+- Also includes Greek alphabet reference page (`calc12book-greek.tex`)
+
+## Next steps
+
+- Improve renderer for calculus macros (`\ddx`, `\dfdx`, clrscode listings)
+- Fix remaining ~33 figure conversions (MetaPost `.0`, some gnuplot)
+- Add chapter PDF generation once Playwright CI is confirmed
