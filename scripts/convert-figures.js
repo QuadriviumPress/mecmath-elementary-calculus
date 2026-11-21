@@ -146,6 +146,23 @@ function copyTikzDependencies(content, workDir) {
       break;
     }
   }
+
+  // TikZ `plot ... function{...}` invokes gnuplot and reads `\jobname.pgf-plot.table`.
+  // Standalone compiles use jobname `figure`; full-book builds leave e.g.
+  // calc12book.pgf-plot.table in the source tree. TeX Live 2025 (ubuntu-26
+  // runners) hard-fails without that table when gnuplot/shell-escape is absent.
+  if (/\bfunction\s*\{/.test(content)) {
+    const tables = fs.readdirSync(srcDir).filter((f) => f.endsWith('.pgf-plot.table'));
+    if (tables.length > 0) {
+      const preferred = tables.includes('figure.pgf-plot.table')
+        ? 'figure.pgf-plot.table'
+        : tables[0];
+      fs.copyFileSync(
+        path.join(srcDir, preferred),
+        path.join(workDir, 'figure.pgf-plot.table')
+      );
+    }
+  }
 }
 
 function epsToPdf(eps, pdf) {
